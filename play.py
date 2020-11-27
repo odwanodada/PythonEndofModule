@@ -33,7 +33,7 @@ def play():
     mynumbers = [a, b, c, d, e, f]
 
     if len(mynumbers) != len(set(mynumbers)):
-        messagebox.showinfo("same", "Do not allow duplicates")
+        messagebox.showinfo("Lotto", "Do not allow duplicates")
     else:
         return mynumbers
 

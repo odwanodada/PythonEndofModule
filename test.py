@@ -11,7 +11,7 @@ w2.config(bg="yellow")
 def savetofile():
     x = result ="\n "+ namestudent.get() + "  " + fscore.get()+"/4"
     messagebox.showinfo("results", "your results been saved successfuly")
-    if int(year.get())==1:
+    if int(enter_num4.get())==1:
         f = open('results C1.txt', 'a')
         f.write(result)
         f.close()
