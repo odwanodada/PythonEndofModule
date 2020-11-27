@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import messagebox, Text
 import random
 from datetime import *
 
@@ -30,9 +30,12 @@ def play():
     d = int(enter_num4.get("1.0", END))
     e = int(enter_num5.get("1.0", END))
     f = int(enter_num6.get("1.0", END))
+    mynumbers = [a, b, c, d, e, f]
 
-    mynumbers = [a,b,c,d,e,f]
-    return mynumbers
+    if len(mynumbers) != len(set(mynumbers)):
+        messagebox.showinfo("same", "Do not allow duplicates")
+    else:
+        return mynumbers
 
 
 def random_num():
@@ -50,12 +53,7 @@ def random_num():
             Lottonumbers.append(newrandom)
 
 
-    num1_text.insert("1.0", str(Lottonumbers[0]))
-    num2_text.insert("1.0", str(Lottonumbers[1]))
-    num3_text.insert("1.0", str(Lottonumbers[2]))
-    num4_text.insert("1.0", str(Lottonumbers[3]))
-    num5_text.insert("1.0", str(Lottonumbers[4]))
-    num6_text.insert("1.0", str(Lottonumbers[5]))
+
     return Lottonumbers
 
 
@@ -64,16 +62,14 @@ def compare():
     Lottonumbers= random_num()
 
     result = [y for y in mynumbers if y in Lottonumbers]
+    num1_text.insert("1.0", str(Lottonumbers[0]))
+    num2_text.insert("1.0", str(Lottonumbers[1]))
+    num3_text.insert("1.0", str(Lottonumbers[2]))
+    num4_text.insert("1.0", str(Lottonumbers[3]))
+    num5_text.insert("1.0", str(Lottonumbers[4]))
+    num6_text.insert("1.0", str(Lottonumbers[5]))
 
-    if len(mynumbers) != len(set(mynumbers)):
-        messagebox.showinfo("same", "Do not allow duplicates")
-    else:
-        pass
-
-
-
-
-    if len(result) == 6:
+    if len(result) == 5:
         messagebox.showinfo("lotto", "You Won R10, 000 000.00")
         enter_num1.delete('1.0', END)
         enter_num2.delete('1.0', END)
@@ -82,7 +78,7 @@ def compare():
         enter_num5.delete('1.0', END)
         enter_num6.delete('1.0', END)
 
-    elif len(result) == 5:
+    elif len(result) == 4:
         messagebox.showinfo("lotto", "You Won R8,584.00")
         enter_num1.delete('1.0', END)
         enter_num2.delete('1.0', END)
@@ -91,7 +87,7 @@ def compare():
         enter_num5.delete('1.0', END)
         enter_num6.delete('1.0', END)
 
-    elif len(result) == 4:
+    elif len(result) == 3:
         messagebox.showinfo("lotto", "You Won R2,384.00")
         enter_num1.delete('1.0', END)
         enter_num2.delete('1.0', END)
@@ -100,7 +96,7 @@ def compare():
         enter_num5.delete('1.0', END)
         enter_num6.delete('1.0', END)
 
-    elif len(result) == 3:
+    elif len(result) == 2:
         messagebox.showinfo("lotto", "You Won R100.50")
         enter_num1.delete('1.0', END)
         enter_num2.delete('1.0', END)
@@ -110,11 +106,11 @@ def compare():
         enter_num6.delete('1.0', END)
 
 
-    elif len(result) == 2:
+    elif len(result) == 1:
         messagebox.showinfo("lotto", "You Won R20.00")
 
 
-    elif len(result) == 1:
+    elif len(result) == 0:
         messagebox.showinfo("lotto", "You Won R0.00")
 
 
