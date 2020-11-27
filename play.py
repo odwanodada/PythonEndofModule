@@ -69,7 +69,7 @@ def compare():
     num5_text.insert("1.0", str(Lottonumbers[4]))
     num6_text.insert("1.0", str(Lottonumbers[5]))
 
-    if len(result) == 5:
+    if len(result) == 6:
         messagebox.showinfo("lotto", "You Won R10, 000 000.00")
         enter_num1.delete('1.0', END)
         enter_num2.delete('1.0', END)
@@ -78,7 +78,7 @@ def compare():
         enter_num5.delete('1.0', END)
         enter_num6.delete('1.0', END)
 
-    elif len(result) == 4:
+    elif len(result) == 5:
         messagebox.showinfo("lotto", "You Won R8,584.00")
         enter_num1.delete('1.0', END)
         enter_num2.delete('1.0', END)
@@ -87,7 +87,7 @@ def compare():
         enter_num5.delete('1.0', END)
         enter_num6.delete('1.0', END)
 
-    elif len(result) == 3:
+    elif len(result) == 4:
         messagebox.showinfo("lotto", "You Won R2,384.00")
         enter_num1.delete('1.0', END)
         enter_num2.delete('1.0', END)
@@ -96,7 +96,7 @@ def compare():
         enter_num5.delete('1.0', END)
         enter_num6.delete('1.0', END)
 
-    elif len(result) == 2:
+    elif len(result) == 3:
         messagebox.showinfo("lotto", "You Won R100.50")
         enter_num1.delete('1.0', END)
         enter_num2.delete('1.0', END)
@@ -106,12 +106,14 @@ def compare():
         enter_num6.delete('1.0', END)
 
 
-    elif len(result) == 1:
+    elif len(result) == 2:
         messagebox.showinfo("lotto", "You Won R20.00")
 
 
-    elif len(result) == 0:
+    elif len(result) == 1:
         messagebox.showinfo("lotto", "You Won R0.00")
+
+
 
 
 def reset_all():
