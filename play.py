@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import messagebox, Text
+from tkinter import messagebox
 import random
 from datetime import *
 import cget
@@ -24,7 +24,7 @@ time_lbl.config(text="time" + time.strftime(" %H: %M"))
 
 
 
-def play():
+def get_nums():
     a = int(enter_num1.get("1.0", END))
     b = int(enter_num2.get("1.0", END))
     c = int(enter_num3.get("1.0", END))
@@ -35,8 +35,29 @@ def play():
 
     if len(mynumbers) != len(set(mynumbers)):
         messagebox.showinfo("Lotto", "Do not allow duplicates")
+
+
+    elif a > 49 and a < 0:
+        messagebox.showinfo("Lotto","Number must be between 0 and 49")
+
+    elif b > 49 and b < 0:
+        messagebox.showinfo("Lotto","Number must be between 0 and 49")
+
+    elif c > 49 and c < 0:
+        messagebox.showinfo("Lotto", "Number must be between 0 and 49")
+
+    elif d > 49 and d < 0:
+        messagebox.showinfo("Lotto", "Number must be between 0 and 49")
+
+    elif e > 49 and e < 0:
+        messagebox.showinfo("Lotto", "Number must be between 0 and 49")
+
+    elif f > 49 and f < 0:
+        messagebox.showinfo("Lotto", "Number must be between 0 and 49")
     else:
         return mynumbers
+
+
 
 
 def random_num():
@@ -58,13 +79,14 @@ def random_num():
     return Lottonumbers
 
 
-def compare():
+def play():
     try:
-        mynumbers = play()
+        mynumbers = get_nums()
         Lottonumbers= random_num()
 
-        result = [y for y in mynumbers if y in Lottonumbers]
 
+
+        result = [y for y in mynumbers if y in Lottonumbers]
 
         num1_text.insert("1.0", str(Lottonumbers[0]))
         num2_text.insert("1.0", str(Lottonumbers[1]))
@@ -73,8 +95,12 @@ def compare():
         num5_text.insert("1.0", str(Lottonumbers[4]))
         num6_text.insert("1.0", str(Lottonumbers[-1]))
 
+
+
+
+
         if len(result) == 6:
-            answer_lbl.configure(text="You Won R10, 000 000.00")
+            answer_lbl.configure(text="You Won R10, 000 000.00" + "\n")
             f = open("results.txt", "a+")
             f.write(answer_lbl.cget("text") + "\n" + str(result) + "\n" + date_lbl.cget("text") + "\n" + time_lbl.cget("text"))
             messagebox.showinfo("lotto", "You Won R10, 000 000.00")
@@ -89,20 +115,20 @@ def compare():
 
 
         elif len(result) == 4:
-            answer_lbl.configure(text="You Won R2, 384.00")
+            answer_lbl.configure(text="You Won R2, 384.00" + "\n")
             f = open("results.txt", "a+")
             f.write(answer_lbl.cget("text") + "\n" + str(result) + "\n" + date_lbl.cget("text") + "\n" + time_lbl.cget("text") + "\n")
             messagebox.showinfo("lotto", "You Won R2,384.00")
 
         elif len(result) == 3:
-            answer_lbl.configure(text="You Won R100.50")
+            answer_lbl.configure(text="You Won R100.50" + "\n")
             f = open("results.txt", "a+")
             f.write(answer_lbl.cget("text") + "\n" + str(result) + "\n" + date_lbl.cget("text") + "\n" + time_lbl.cget("text") + "\n")
             messagebox.showinfo("lotto", "You Won R100.50")
 
 
         elif len(result) == 2:
-            answer_lbl.configure(text="You Won R20.00")
+            answer_lbl.configure(text="You Won R20.00" + "\n")
             f = open("results.txt", "a+")
             f.write(answer_lbl.cget("text") + "\n" + str(result) + "\n" + date_lbl.cget("text") + "\n" + time_lbl.cget("text") + "\n")
             messagebox.showinfo("lotto", "You Won R20.00")
@@ -110,7 +136,7 @@ def compare():
 
         elif len(result) == 1:
             answer_lbl.configure(text="You Won R0.00")
-            messagebox.showinfo("lotto", "You Won")
+            messagebox.showinfo("lotto", "You Lost")
 
     except ValueError:
         messagebox.showinfo("Lotto", "Please enter a number")
@@ -173,7 +199,7 @@ enter_num6.place(x=520, y=100)
 
 
 
-play_button = Button(w2, text="PLAY ", bg="magenta", command=compare)
+play_button = Button(w2, text="PLAY ", bg="magenta", command=play)
 play_button.place(x=80, y=280)
 
 reset_button = Button(w2, text="RESET ", bg="magenta",command=reset_all)

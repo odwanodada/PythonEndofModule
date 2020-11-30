@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+from datetime import *
 
 
 w = Tk()
@@ -28,10 +29,18 @@ def check():
 
 
 
+date = datetime.now()
+date_lbl= Label(w)
+date_lbl.pack()
+date_lbl.config(text="date" + date.strftime(" %d/ %m/ %y "))
+
+time = datetime.now()
+time_lbl= Label(w)
+time_lbl.pack()
+time_lbl.config(text="time" + time.strftime(" %H: %M"))
 
 
-
-user_lbl=Label(w, text="Username")
+user_lbl=Label(w, text="Username:")
 user_lbl.pack()
 
 user_entry=Entry(w, textvariable="username")

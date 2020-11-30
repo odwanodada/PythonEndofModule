@@ -1,1 +1,12 @@
+name:odwa
+age:18
+You Won R20.00
 
+[1, 6]
+date 30/ 11/ 20 
+time 14: 58
+You Won R20.00
+
+[5, 5]
+date 30/ 11/ 20 
+time 15: 06
