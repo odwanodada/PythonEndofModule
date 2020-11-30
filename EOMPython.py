@@ -10,8 +10,13 @@ w.config(bg="yellow")
 
 def check():
     age = int(age_entry.get())
+    name = user_entry.get()
     if (age>=18):
         messagebox.showinfo("INFO", "You qualify to play")
+        f = open("results.txt", "a+")
+        f.write("name:" + name +"\n")
+        f.write("age:" + str(age) + "\n")
+        f.close()
         w.withdraw()
         import play
         play.verify()
@@ -19,6 +24,7 @@ def check():
         messagebox.showinfo("INFO", "Under age to play")
         user_entry.delete(0, END)
         age_entry.delete(0, END)
+
 
 
 

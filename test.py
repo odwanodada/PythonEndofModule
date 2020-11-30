@@ -8,21 +8,6 @@ w2.geometry("700x700")
 w2.config(bg="yellow")
 
 
-def savetofile():
-    x = result ="\n "+ namestudent.get() + "  " + fscore.get()+"/4"
-    messagebox.showinfo("results", "your results been saved successfuly")
-    if int(enter_num4.get())==1:
-        f = open('results C1.txt', 'a')
-        f.write(result)
-        f.close()
-    if int(year.get())==2:
-        f = open('results C2.txt', 'a')
-        f.write(result)
-        f.close()
-    if int(year.get())==3:
-        f = open('results C3.txt', 'a')
-        f.write(result)
-        f.close()
 
 def play():
     a = int(enter_num1.get("1.0", END))
@@ -49,6 +34,8 @@ def random_num():
         newrandom = random.randint(1,49)
         if newrandom not in Lottonumbers:
             Lottonumbers.append(newrandom)
+
+
 
 
     num1_text.insert("1.0", str(Lottonumbers[0]))
@@ -195,3 +182,6 @@ num6_text.place(x=520, y=350)
 
 
 w2.mainloop()
+
+
+

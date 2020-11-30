@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox, Text
 import random
 from datetime import *
+import cget
 
 w2 = Tk()
 w2.title("Play Lotto")
@@ -58,60 +59,61 @@ def random_num():
 
 
 def compare():
-    mynumbers = play()
-    Lottonumbers= random_num()
+    try:
+        mynumbers = play()
+        Lottonumbers= random_num()
 
-    result = [y for y in mynumbers if y in Lottonumbers]
-    num1_text.insert("1.0", str(Lottonumbers[0]))
-    num2_text.insert("1.0", str(Lottonumbers[1]))
-    num3_text.insert("1.0", str(Lottonumbers[2]))
-    num4_text.insert("1.0", str(Lottonumbers[3]))
-    num5_text.insert("1.0", str(Lottonumbers[4]))
-    num6_text.insert("1.0", str(Lottonumbers[5]))
-
-    if len(result) == 6:
-        messagebox.showinfo("lotto", "You Won R10, 000 000.00")
-        enter_num1.delete('1.0', END)
-        enter_num2.delete('1.0', END)
-        enter_num3.delete('1.0', END)
-        enter_num4.delete('1.0', END)
-        enter_num5.delete('1.0', END)
-        enter_num6.delete('1.0', END)
-
-    elif len(result) == 5:
-        messagebox.showinfo("lotto", "You Won R8,584.00")
-        enter_num1.delete('1.0', END)
-        enter_num2.delete('1.0', END)
-        enter_num3.delete('1.0', END)
-        enter_num4.delete('1.0', END)
-        enter_num5.delete('1.0', END)
-        enter_num6.delete('1.0', END)
-
-    elif len(result) == 4:
-        messagebox.showinfo("lotto", "You Won R2,384.00")
-        enter_num1.delete('1.0', END)
-        enter_num2.delete('1.0', END)
-        enter_num3.delete('1.0', END)
-        enter_num4.delete('1.0', END)
-        enter_num5.delete('1.0', END)
-        enter_num6.delete('1.0', END)
-
-    elif len(result) == 3:
-        messagebox.showinfo("lotto", "You Won R100.50")
-        enter_num1.delete('1.0', END)
-        enter_num2.delete('1.0', END)
-        enter_num3.delete('1.0', END)
-        enter_num4.delete('1.0', END)
-        enter_num5.delete('1.0', END)
-        enter_num6.delete('1.0', END)
+        result = [y for y in mynumbers if y in Lottonumbers]
 
 
-    elif len(result) == 2:
-        messagebox.showinfo("lotto", "You Won R20.00")
+        num1_text.insert("1.0", str(Lottonumbers[0]))
+        num2_text.insert("1.0", str(Lottonumbers[1]))
+        num3_text.insert("1.0", str(Lottonumbers[2]))
+        num4_text.insert("1.0", str(Lottonumbers[3]))
+        num5_text.insert("1.0", str(Lottonumbers[4]))
+        num6_text.insert("1.0", str(Lottonumbers[-1]))
+
+        if len(result) == 6:
+            answer_lbl.configure(text="You Won R10, 000 000.00")
+            f = open("results.txt", "a+")
+            f.write(answer_lbl.cget("text") + "\n" + str(result) + "\n" + date_lbl.cget("text") + "\n" + time_lbl.cget("text"))
+            messagebox.showinfo("lotto", "You Won R10, 000 000.00")
 
 
-    elif len(result) == 1:
-        messagebox.showinfo("lotto", "You Won R0.00")
+
+        elif len(result) == 5:
+            answer_lbl.configure(text="You Won R8, 584.00")
+            f = open("results.txt", "a+")
+            f.write(answer_lbl.cget("text") + "\n" + str(result) + "\n" + date_lbl.cget("text") + "\n" + time_lbl.cget("text"))
+            messagebox.showinfo("lotto", "You Won R8,584.00")
+
+
+        elif len(result) == 4:
+            answer_lbl.configure(text="You Won R2, 384.00")
+            f = open("results.txt", "a+")
+            f.write(answer_lbl.cget("text") + "\n" + str(result) + "\n" + date_lbl.cget("text") + "\n" + time_lbl.cget("text") + "\n")
+            messagebox.showinfo("lotto", "You Won R2,384.00")
+
+        elif len(result) == 3:
+            answer_lbl.configure(text="You Won R100.50")
+            f = open("results.txt", "a+")
+            f.write(answer_lbl.cget("text") + "\n" + str(result) + "\n" + date_lbl.cget("text") + "\n" + time_lbl.cget("text") + "\n")
+            messagebox.showinfo("lotto", "You Won R100.50")
+
+
+        elif len(result) == 2:
+            answer_lbl.configure(text="You Won R20.00")
+            f = open("results.txt", "a+")
+            f.write(answer_lbl.cget("text") + "\n" + str(result) + "\n" + date_lbl.cget("text") + "\n" + time_lbl.cget("text") + "\n")
+            messagebox.showinfo("lotto", "You Won R20.00")
+
+
+        elif len(result) == 1:
+            answer_lbl.configure(text="You Won R0.00")
+            messagebox.showinfo("lotto", "You Won")
+
+    except ValueError:
+        messagebox.showinfo("Lotto", "Please enter a number")
 
 
 
@@ -130,6 +132,7 @@ def reset_all():
     enter_num4.delete('1.0', END)
     enter_num5.delete('1.0', END)
     enter_num6.delete('1.0', END)
+    answer_lbl.config(text="")
 
 def exit_window():
     message_box = messagebox.askquestion('Exit Application', 'Are you sure you want to exit the application')
@@ -197,6 +200,8 @@ num5_text.place(x=420, y=350)
 num6_text = Text(w2,width=7,height=3,bg="orange",font=("arial", 20, "bold"))
 num6_text.place(x=520, y=350)
 
+answer_lbl = Label(w2)
+answer_lbl.place(x=350, y=500)
 
 
 w2.mainloop()
