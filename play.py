@@ -2,13 +2,10 @@ from tkinter import *
 from tkinter import messagebox
 import random
 from datetime import *
-import cget
-
 w2 = Tk()
 w2.title("Play Lotto")
 w2.geometry("700x700")
 w2.config(bg="yellow")
-
 
 date = datetime.now()
 date_lbl= Label(w2)
@@ -19,9 +16,6 @@ time = datetime.now()
 time_lbl= Label(w2)
 time_lbl.place(x=150,y=10)
 time_lbl.config(text="time" + time.strftime(" %H: %M"))
-
-
-
 
 
 def get_nums():
@@ -58,8 +52,6 @@ def get_nums():
         return mynumbers
 
 
-
-
 def random_num():
     num1_text.delete("1.0", END)
     num2_text.delete("1.0", END)
@@ -74,17 +66,12 @@ def random_num():
         if newrandom not in Lottonumbers:
             Lottonumbers.append(newrandom)
 
-
-
     return Lottonumbers
-
 
 def play():
     try:
         mynumbers = get_nums()
         Lottonumbers= random_num()
-
-
 
         result = [y for y in mynumbers if y in Lottonumbers]
 
@@ -94,7 +81,6 @@ def play():
         num4_text.insert("1.0", str(Lottonumbers[3]))
         num5_text.insert("1.0", str(Lottonumbers[4]))
         num6_text.insert("1.0", str(Lottonumbers[-1]))
-
 
 
 
@@ -173,25 +159,25 @@ def exit_window():
 
 
 enter_num1 = Text(w2,width=7,height=3,bg="pink",font=("arial", 20, "bold"))
-enter_num1.place(x=30, y=100)
+enter_num1.place(x=30, y=200)
 
 
 enter_num2 = Text(w2,width=7,height=3,bg="pink",font=("arial", 20, "bold"))
-enter_num2.place(x=120, y=100)
+enter_num2.place(x=120, y=200)
 
 enter_num3 = Text(w2,width=7,height=3,bg="pink",font=("arial", 20, "bold"))
-enter_num3.place(x=220, y=100)
+enter_num3.place(x=220, y=200)
 
 
 enter_num4 = Text(w2,width=7,height=3,bg="pink",font=("arial", 20, "bold"))
-enter_num4.place(x=320, y=100)
+enter_num4.place(x=320, y=200)
 
 
 enter_num5 = Text(w2,width=7,height=3,bg="pink",font=("arial", 20, "bold"))
-enter_num5.place(x=420, y=100)
+enter_num5.place(x=420, y=200)
 
 enter_num6 = Text(w2,width=7,height=3,bg="pink",font=("arial", 20, "bold"))
-enter_num6.place(x=520, y=100)
+enter_num6.place(x=520, y=200)
 
 
 
@@ -200,34 +186,34 @@ enter_num6.place(x=520, y=100)
 
 
 play_button = Button(w2, text="PLAY ", bg="magenta", command=play)
-play_button.place(x=80, y=280)
+play_button.place(x=80, y=350)
 
 reset_button = Button(w2, text="RESET ", bg="magenta",command=reset_all)
-reset_button.place(x=200, y=280)
+reset_button.place(x=200, y=350)
 
 exit_button = Button(w2, text="EXIT ", bg="magenta",command=exit_window)
-exit_button.place(x=320, y=280)
+exit_button.place(x=320, y=350)
 
 num1_text = Text(w2,width=7,height=3,bg="green",font=("arial", 20, "bold"))
-num1_text.place(x=30, y=350)
+num1_text.place(x=30, y=450)
 
 num2_text = Text(w2,width=7,height=3,bg="green",font=("arial", 20, "bold"))
-num2_text.place(x=120, y=350)
+num2_text.place(x=120, y=450)
 
 num3_text = Text(w2,width=7,height=3,bg="green",font=("arial", 20, "bold"))
-num3_text.place(x=220, y=350)
+num3_text.place(x=220, y=450)
 
 num4_text = Text(w2,width=7,height=3,bg="orange",font=("arial", 20, "bold"))
-num4_text.place(x=320, y=350)
+num4_text.place(x=320, y=450)
 
 num5_text = Text(w2,width=7,height=3,bg="orange",font=("arial", 20, "bold"))
-num5_text.place(x=420, y=350)
+num5_text.place(x=420, y=450)
 
 num6_text = Text(w2,width=7,height=3,bg="orange",font=("arial", 20, "bold"))
-num6_text.place(x=520, y=350)
+num6_text.place(x=520, y=450)
 
 answer_lbl = Label(w2)
-answer_lbl.place(x=350, y=500)
+answer_lbl.place(x=350, y=550)
 
 
 w2.mainloop()
